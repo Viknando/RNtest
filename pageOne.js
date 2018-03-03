@@ -4,41 +4,43 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    NativeModules
 } from 'react-native';
 
 export default class pageOne extends Component<> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome} onPress={() => navigate('App')}>
-          Back to App!
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.welcome}
+                      onPress={() => NativeModules.JsToNative.startActivityFromJS("com.rnjswithnative.BActivity", "this msg from RN")}>
+                    Jump to NativePage!!!
+                </Text>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
 });
