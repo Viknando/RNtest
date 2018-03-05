@@ -27,6 +27,15 @@ export default class pageOne extends Component<> {
                       })}>
                     Sending 'this msg is from RN',native toasts and callback to RN!
                 </Text>
+
+                <Text style={styles.welcome}
+                      onPress={() => NativeModules.Native_Module.sendMsgFromJSandPromise("this msg is from rn(promise)").then((msg) => {
+                          alert("promise:"+msg)
+                      }).catch((error)=>{
+                          alert("catch"+error)
+                      })}>
+                    Sending 'this msg is from RN',native toasts and promise to RN!
+                </Text>
             </View>
         );
     }

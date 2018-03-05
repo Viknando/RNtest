@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -51,6 +52,18 @@ public class JumpModule extends ReactContextBaseJavaModule {
         }catch(Exception e){
             throw new JSApplicationIllegalArgumentException(
                     "不能打开Activity : "+e.getMessage());
+        }
+    }
+    @ReactMethod
+    public void sendMsgFromJSandPromise(String msg, Promise promise){
+        try{
+            Activity currentActivity = getCurrentActivity();
+            if(null!=currentActivity){
+                Toast.makeText(currentActivity,msg,Toast.LENGTH_SHORT).show();
+                promise.resolve("this msg is from Native!");
+            }
+        }catch(Exception e){
+            promise.reject(e);
         }
     }
 }
