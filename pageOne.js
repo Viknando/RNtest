@@ -18,8 +18,14 @@ export default class pageOne extends Component<> {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}
-                      onPress={() => NativeModules.JsToNative.startActivityFromJS("com.rnjswithnative.BActivity", "this msg from RN")}>
+                      onPress={() => NativeModules.Native_Module.startActivityFromJS("com.rnjswithnative.BActivity", "this msg from RN")}>
                     Jump to NativePage!!!
+                </Text>
+                <Text style={styles.welcome}
+                      onPress={() => NativeModules.Native_Module.sendMsgFromJSandCallBack("this msg is from rn", (msg) => {
+                          alert(msg)
+                      })}>
+                    Sending 'this msg is from RN',native toasts and callback to RN!
                 </Text>
             </View>
         );
