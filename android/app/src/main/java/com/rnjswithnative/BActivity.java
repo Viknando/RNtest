@@ -1,6 +1,7 @@
 package com.rnjswithnative;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class BActivity extends Activity {
         });
     }
     public void jumpToRN(){
-
+        Intent intent=new Intent(this,BRActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }
